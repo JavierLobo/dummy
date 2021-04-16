@@ -103,6 +103,7 @@ local.properties
 .sts4-cache/
 
 ### Maven ###
+.mvn
 target/
 pom.xml.tag
 pom.xml.releaseBackup
