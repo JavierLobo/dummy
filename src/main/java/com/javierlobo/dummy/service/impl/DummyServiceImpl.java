@@ -44,6 +44,8 @@ public class DummyServiceImpl implements IDummyService {
 
 	@Override
 	public List<User> getUserList() {
+		if (userList == null || userList.isEmpty() || userList.size() == 0)
+			userList.add(new User("", 0, ""));
 		return userList;
 	}
 	
