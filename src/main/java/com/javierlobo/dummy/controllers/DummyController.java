@@ -76,7 +76,7 @@ public class DummyController {
 	})
 	@PostMapping("/api/user")
 	public @ResponseBody User postUser(
-			@RequestParam User user) {
+			@RequestBody User user) {
 		return dummyService.createUser(user);
 	}
 	
@@ -89,7 +89,7 @@ public class DummyController {
 	})
 	@PutMapping("/api/user")
 	public @ResponseBody User putUser(
-			@RequestParam User user) {
+			@RequestBody User user) {
 		return dummyService.modifiUser(user);
 	}
 
@@ -101,11 +101,11 @@ public class DummyController {
         @ApiResponse(code = 404, message = SERVER_NOT_FOUND)
 	})
 	@DeleteMapping("/api/user/{userName}")
-	public @ResponseBody User deleteUser(
+	public User deleteUser(
 		@ApiParam(
             value = "Nombre de usuario.", 
             required = true)
-		@PathVariable("userName") String userName) {
+		@PathVariable("userName") String userName) throws Exception {
 		return dummyService.deleteUser(userName);
 	}
 }

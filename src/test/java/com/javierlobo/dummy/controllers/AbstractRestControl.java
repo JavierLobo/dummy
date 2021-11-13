@@ -22,8 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 //@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = DummyController.class)
 @WebAppConfiguration
-public abstract class AbstractRestControlTest {
-	
+public abstract class AbstractRestControl {
+	// ToDo: Refactorizar
+	// ToDo: sacar los métodos para llevarlos a otras clases abstractas
+
 	protected MockMvc mvc;
 	protected String url;
 
@@ -55,7 +57,9 @@ public abstract class AbstractRestControlTest {
 	}
 	
     protected MockHttpServletResponse postPetition(Object inputClass) throws Exception {
-		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(this.getUrl())
+		MvcResult mvcResult = mvc
+				.perform(MockMvcRequestBuilders
+						.post(this.getUrl())
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(this.mapToJson(inputClass)))
 				.andReturn();
@@ -63,7 +67,9 @@ public abstract class AbstractRestControlTest {
 		return mvcResult.getResponse();
 	}
 	protected MockHttpServletResponse putPetition(Object inputClass) throws Exception {
-		MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(this.getUrl())
+		MvcResult mvcResult = mvc
+				.perform(MockMvcRequestBuilders
+						.post(this.getUrl())
 				.contentType(MediaType.APPLICATION_JSON_VALUE)
 				.content(this.mapToJson(inputClass)))
 				.andReturn();
@@ -74,8 +80,10 @@ public abstract class AbstractRestControlTest {
 	protected MockHttpServletResponse deletePetition() throws Exception {
 		MvcResult mvcResult = mvc
 				.perform(MockMvcRequestBuilders
-						.delete(this.getUrl()))
+						.delete(this.getUrl())
+						.accept(MediaType.APPLICATION_JSON_VALUE))
 				.andReturn();
+
 		return mvcResult.getResponse();
 	}
 	

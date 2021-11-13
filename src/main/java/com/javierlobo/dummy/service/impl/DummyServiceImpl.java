@@ -32,14 +32,17 @@ public class DummyServiceImpl implements IDummyService {
 	}
 
 	@Override
-	public User deleteUser(String userName) {
+	public User deleteUser(String userName) throws Exception {
 		User deletedUser = new User();
 		
 		if (existUser(userName)) {
 			deletedUser = getUser(userName);
 			userList.remove(deletedUser);
+			return deletedUser;
+
+		} else {
+			throw new Exception("No existe el usuario '".concat(userName).concat("'"));
 		}
-		return deletedUser;
 	}
 
 	@Override

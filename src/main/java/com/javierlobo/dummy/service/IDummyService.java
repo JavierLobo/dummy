@@ -12,7 +12,7 @@ public interface IDummyService {
 
 	User modifiUser(User user);
 
-	User deleteUser(String userName);
+	User deleteUser(String userName) throws Exception;
 
 	List<User> getUserList();
 
